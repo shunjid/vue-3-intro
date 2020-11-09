@@ -1,3 +1,4 @@
+<!-- Demo: https://cdpn.io/_shunjid/debug/mdEzGvX/yoAZEpzDEQwr -->
 <template>
   <div id="app">
     <h3>What is your favourite color?</h3>
