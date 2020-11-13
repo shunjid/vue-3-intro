@@ -86,7 +86,7 @@ const App = {
           title: this.newTitle,
           label:this.newLabel
         });
-        M.toast({html: 'Added new blog', classes: 'orange darken-1 rounded'});
+        M.toast({html: 'Added new blog', classes: 'blue darken-1 rounded'});
         this.newAuthor = '';
         this.newTitle = '';
         this.newLabel = '';
