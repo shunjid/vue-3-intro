@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css");
+
+.input-field input:focus + label {
+   color: #1976d2 !important;
+ }
+ /* label underline focus color */
+ .row .input-field input:focus {
+   border-bottom: 1px #1976d2 !important;
+   box-shadow: 0 1px 0 0 #1976d2 !important
+ }
+
+.select-wrapper ul li>span {
+    color: #1976d2;
+}

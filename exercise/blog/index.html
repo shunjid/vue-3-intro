@@ -1,0 +1,82 @@
+<!-- Demo: https://cdpn.io/_shunjid/debug/GRqzqgY/mWMoNzvdEvPk -->
+<div id="app">
+  <div id="app">
+    <nav>
+      <div class="nav-wrapper center-align blue darken-2">
+        <a href="#" class="brand-logo">My Blogs</a>
+      </div>
+    </nav>
+
+    <!-- Form -->
+    <div class="row">
+      <div class="col s12 l12">
+        <div class="card hoverable z-depth-5">
+          <div class="card-content">
+            <span class="card-title">Blog Editor</span>
+            <p>
+              Fill-up this form by adding your blog title, name and the category
+              of the blog you are posting here.
+            </p>
+            <!-- Form inputs -->
+            <div class="row">
+              <div class="input-field col s12 l4">
+                <input id="title" type="text" class="validate" v-model="newTitle" />
+                <label for="title">Title</label>
+              </div>
+              <div class="input-field col s12 l4">
+                <input id="author" type="text" class="validate" v-model="newAuthor" />
+                <label for="author">Author</label>
+              </div>
+              <div class="input-field col s12 l4">
+                <select name="label" id="label" v-model="newLabel">
+                  <option value="" disabled selected>Choose blog type</option>
+                  <option value="science">science</option>
+                  <option value="math">math</option>
+                  <option value="poetry">poetry</option>
+                  <option value="history">history</option>
+                </select>
+              </div>
+            </div>
+            <div class="row center-align">
+              <button class="btn blue darken-2 waves-effect waves-light" type="submit" name="action"
+                @click="saveNewBlog">
+                Post
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+            <!-- Form Ends -->
+            <h4 class="card-title">Find Blogs Here</h4>
+            <div class="row">
+              <div class="input-field col s12">
+                <select name="filter" id="filter" v-model="filterText">
+                  <option value="" disabled selected>Filter by selecting category</option>
+                  <option value="science">science</option>
+                  <option value="math">math</option>
+                  <option value="poetry">poetry</option>
+                  <option value="history">history</option>
+                </select>
+              </div>
+            </div>
+
+
+
+            <ul class="collection">
+              <li class="collection-item avatar" v-for="(post, index) in filteredPosts" :key="index">
+                <i class="material-icons circle blue darken-2">book</i>
+                <span class="title">{{ post.title }}</span>
+
+                <div class="row">
+                  <div class="col s6">
+                    <p>{{ post.author }}</p>
+                  </div>
+                  <div class="col s6"><span :class="getBadgeColor(post.label)"
+                      data-badge-caption="">{{ post.label }}</span></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

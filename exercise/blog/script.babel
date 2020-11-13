@@ -1,0 +1,106 @@
+const App = {
+  data() {
+    return {
+      filterText: "",
+      selected: "",
+      posts: [
+        {
+          author: "@vFitzgerald",
+          title: "Quod Ducimus Omnis",
+          label: "science",
+        },
+        {
+          author: "@mPalmer",
+          title: "Vero Eius Laboriosam Ex Repudiandae",
+          label: "math",
+        },
+        {
+          author: "@mDean",
+          title: "Magnam Odit",
+          label: "science",
+        },
+        {
+          author: "@tCole",
+          title: "Velit Mollitia Voluptates Assumenda",
+          label: "science",
+        },
+        {
+          author: "@jCooper",
+          title: "Eum Commodi Cupiditate",
+          label: "poetry",
+        },
+        {
+          author: "@lLamb",
+          title: "Amet",
+          label: "history",
+        },
+        {
+          author: "@fMartin",
+          title: "Voluptatem Fuga Cum Asperiores Error",
+          label: "science",
+        },
+        {
+          author: "@eHayes",
+          title: "Ipsa Consectetur Rerum Repellat Quia",
+          label: "math",
+        },
+        {
+          author: "@cCollier",
+          title: "Dolor Nihil Delectus",
+          label: "history",
+        },
+        {
+          author: "@cBenson",
+          title: "Labore Ipsum Ad Pariatur",
+          label: "poetry",
+        },
+      ],
+      newTitle: "",
+      newAuthor: "",
+      newLabel: "",
+    };
+  },
+  mounted () {
+    M.AutoInit();
+  },
+  methods: {
+    getBadgeColor(labelName) {
+      const labelColor = {
+        'science': 'new badge red darken-1',
+        'math': 'new badge pink darken-2',
+        'history': 'new badge green darken-2',
+        'poetry': 'new badge purple darken-1'
+      }
+      return labelColor[labelName.toLowerCase()];
+    },
+    saveNewBlog() {
+      if(!this.newTitle) {
+        M.toast({html: 'Provide blog title', classes: 'rounded'});
+      } else if(!this.newAuthor) {
+        M.toast({html: 'Provide author name', classes: 'rounded'});
+      } else if(!this.newLabel) {
+        M.toast({html: 'Select a label', classes: 'rounded'});
+      } else {
+        this.posts.unshift({
+          author: this.newAuthor.startsWith('@') ? this.newAuthor : '@' + this.newAuthor,
+          title: this.newTitle,
+          label:this.newLabel
+        });
+        M.toast({html: 'Added new blog', classes: 'orange darken-1 rounded'});
+        this.newAuthor = '';
+        this.newTitle = '';
+        this.newLabel = '';
+        $('#title').next().removeClass('active');
+        $('#author').next().removeClass('active');
+      }
+    }
+  },
+  computed : {
+    filteredPosts() {
+      const filter = new RegExp(this.filterText, "i");
+      return this.posts.filter((post) => post.label.match(filter));;
+    }
+  }
+}
+
+Vue.createApp(App).mount('#app')
